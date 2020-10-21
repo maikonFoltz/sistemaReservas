@@ -4,16 +4,30 @@
     require './classes/reservas.class.php';
     
     $reservas = new Reserva($pdo);
-    $carros = new Carro($pdo);
+    $carros = new Carros($pdo);
     
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="foltz2.ico" />
+</head>
+<body>
+    <h1>Reservas</h1>
+    <br>
+    <a href="reserva.php">Adcicionar Reserva</a>
+    <br><br>
+    <?php
+        $lista = $reservas->getReservas();
 
-<h1>Reservas</h1>
-<?php
-    $lista = $reservas->getReservas();
+        foreach($lista as $item){
 
-    foreach($lista as $item){
+            echo $item['nomePessoa']." Reservou carro ".$item['idCarro']." Entre: ".$item['data_inicio']." e ".$item['data_fim']."<br>";
+        }
+    ?>
+</body>
+</html>
 
-        echo $item['nomePessoa']." Reservou carro ".$item['idCarro']." Entre: ".$item['data_inicio']." e ".$item['data_fim']."<br>";
-    }
-?>

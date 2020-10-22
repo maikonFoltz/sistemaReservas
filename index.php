@@ -13,7 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="shortcut icon" href="foltz2.ico" />
+    <link rel="shortcut icon" href="imagens/foltz2.ico" />
 </head>
 <body>
     <h1>Reservas</h1>
@@ -28,6 +28,9 @@
             echo $item['nomePessoa']." Reservou carro ".$item['idCarro']." Entre: ".$item['data_inicio']." e ".$item['data_fim']."<br>";
         }
     ?>
+    <hr>
+    <?php require 'calendario.php'; ?>    
+
 </body>
 </html>
 

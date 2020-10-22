@@ -9,7 +9,7 @@
 
 <h1>Adicionar Reserva</h1>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,6 +17,23 @@
     <link rel="shortcut icon" href="foltz2.ico" />
 </head>
 <body>
+    <?php
+        if(!empty($_POST['carro'])){
+            $car = addslashes($_POST['carro']);
+            $dataInicio = addslashes($_POST['dataInicio']);
+            $dataFim =addslashes($_POST['dataFim']);
+            $nome = addslashes($_POST['pessoa']);
+
+            if($reservas->verificarDisponibilidadeCarro($car, $dataInicio, $dataFim)){
+                $reservas->reservar($car, $dataInicio, $dataFim, $nome);
+                header("Location: index.php");
+                exit;
+            }else{
+                echo "este carro ja esta reservado para esse periodo";
+            }
+
+        }
+    ?>
     <form action="" method="post">
         Carro: <br>
         <select name="carro" id="carro">
